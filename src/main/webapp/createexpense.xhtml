@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:bt="http://java.sun.com/jsf/composite/budget/"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="template.xhtml">
+		<ui:define name="meta">
+			<f:metadata>
+				<f:viewParam name="budgetId" 
+						required="true" value="#{expensesController.budgetId}"/>
+			</f:metadata>
+		</ui:define>
+		<ui:define name="body">
+			<p><h:messages/></p>
+			Expense creation for budget <b>#{expensesController.budget.name}</b>:
+			<br/>
+			<h:form>
+    			<h:panelGrid columns="3">
+    				<h:outputLabel value="Expense description" for="description"/>
+    				<h:inputText id="description" value="#{expensesController.current.description}" title="Expense description"/>
+    				<h:message for="description"/>					
+    			</h:panelGrid>
+				<bt:moneyinput value="#{expensesController.current.amount}" amountLabel="Expense amount"/>
+    			<h:panelGrid columns="3">
+    				<h:commandButton action="#{expensesController.createExpense}" value="Create"/>
+    				<h:commandButton action="expenseslist" value="Cancel" immediate="true">
+    					<f:param name="budgetId" value="#{expensesController.budgetId}"/>
+    				</h:commandButton>
+    			</h:panelGrid>
+    		</h:form>
+		</ui:define>	
+	</ui:composition>
+	
+</html>

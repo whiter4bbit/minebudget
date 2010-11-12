@@ -3,13 +3,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:bt="http://java.sun.com/jsf/composite/budget/"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
 	<ui:composition template="template.xhtml">
 		<ui:define name="body">
-			Create new budget: <br/>
-			<h:form>
-				
-			</h:form>			
+    		<h:form>
+    			<h:panelGrid columns="3">
+    				<h:outputLabel value="Budget name" for="name"/>
+    				<h:inputText id="name" value="#{budgetController.current.name}" title="Budget name"/>
+    				<h:message for="name"/>
+    			</h:panelGrid>
+				<bt:moneyinput value="#{budgetController.current.amount}" amountLabel="Budget amount"/>
+				<h:panelGrid columns="3">
+					<h:commandButton action="#{budgetController.doCreate}" value="Create"/>
+					<h:commandButton action="index?faces-redirect=true" immediate="true" value="Cancel"/>
+				</h:panelGrid>
+    		</h:form>
 		</ui:define>	
 	</ui:composition>
+
 </html>

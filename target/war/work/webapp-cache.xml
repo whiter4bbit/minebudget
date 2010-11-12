@@ -4,12 +4,40 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
+          <string>expenseslist.xhtml</string>
           <string>index.xhtml</string>
+          <string>createbudget.xhtml</string>
+          <string>resources/budget/moneyinput.xhtml</string>
           <string>WEB-INF/sun-web.xml</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/faces-config.xml</string>
+          <string>createexpense.xhtml</string>
           <string>template.xhtml</string>
-          <string>WEB-INF/classes/info/whiter4bbit/BudgetBean.class</string>
+          <string>budgetsummary.xhtml</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ExpensesController.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/BudgetDto.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/BudgetDaoBean.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/CurrencyServiceBean.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/ExpenseDao.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/BaseDaoBean.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/ExpenseDaoBean.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/BudgetServiceBean.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/BaseDao.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/ListConverter.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/Converter.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/BudgetService.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/CurrencyService.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/ejb/BudgetDao.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/model/Money.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/model/Currency.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/model/BaseModel.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/model/CurrencyProperties.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/model/Expense.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/model/Budget.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/BudgetController.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/MoneyConverter.class</string>
+          <string>WEB-INF/classes/info/whiter4bbit/CurrencyController.class</string>
+          <string>WEB-INF/classes/META-INF/persistence.xml</string>
           <string>WEB-INF/lib/jsf-api-2.0.0-b13.jar</string>
           <string>WEB-INF/lib/jsf-impl-2.0.0-b13.jar</string>
           <string>WEB-INF/lib/jstl-1.2.jar</string>
