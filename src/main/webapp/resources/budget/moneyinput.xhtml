@@ -19,17 +19,15 @@
 			<c:set var="currencyLabel" value="#{cc.attrs.currencyLabel}"/>
 		</c:if>
 		<h:outputLabel value="#{cc.attrs.amountLabel}" for="amount"/>
-				
-		<h:inputText id="amount" value="#{cc.attrs.value.amount}"
-				valuechangelistener="#{currencyController.amountChanged}">
-			<f:ajax target="@this" listener="#{currencyController.amountValueListener}"/>
+		<h:inputText id="amount" value="#{cc.attrs.value.amount}" valueChangeListener="#{currencyController.amountChanged}">
+			<f:ajax event="keydown"/>
 		</h:inputText>
-		
 		<h:message for="amount"/>
 		<h:outputLabel value="#{currencyLabel}" for="currency"/>
-		<h:selectOneMenu id="currency" value="#{cc.attrs.value.currency}">
-				<f:selectItem itemLabel="BLR" itemValue="BLR"/>
-				<f:selectItem itemLabel="USD" itemValue="USD"/>
+		<h:selectOneMenu id="currency" value="#{cc.attrs.value.currency}" valueChangeListener="#{currencyController.currencyChanged}">
+			<f:selectItem itemLabel="BLR" itemValue="BLR"/>
+			<f:selectItem itemLabel="USD" itemValue="USD"/>
+			<f:ajax event="click"/>
 		</h:selectOneMenu>
 		<h:message for="currency"/>
 	</cc:implementation>

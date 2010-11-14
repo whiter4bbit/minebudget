@@ -1,5 +1,9 @@
 package info.whiter4bbit;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import info.whiter4bbit.ejb.currency.CurrencyUtils;
 import info.whiter4bbit.model.Money;
 
 import javax.faces.component.UIComponent;
@@ -18,6 +22,8 @@ public class MoneyConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext ctx, UIComponent comp, Object value) {
 		Money money = (Money) value;
-		return String.format("%s %.2f", money.getCurrency(), money.getAmount());
+		Locale locale = CurrencyUtils.getProperties(money.getCurrency()).getLocale();
+		return NumberFormat.getCurrencyInstance(locale).format(money.getAmount());
 	}
+	
 }

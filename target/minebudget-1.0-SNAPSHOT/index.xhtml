@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="template.xhtml">
+		<ui:define name="body">
+			<h:form id="budgetsListForm">
+			
+			<p><h:messages id="messages"/></p>
+			Current budgets list:<br/>
+			
+			<h:dataTable value="#{budgetController.budgets}" var="budget" id="budgetsList">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name"/>
+					</f:facet>
+					<h:outputText value="#{budget.name}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Initial amount"/>
+					</f:facet>
+					<h:outputText value="#{budget.amount}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Current amount"/>
+					</f:facet>
+					<h:outputText value="#{budget.currentAmount}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Created"/>
+					</f:facet>
+					<h:outputText value="#{budget.created}">
+						<f:convertDateTime pattern="MM-dd-yyyy mm-HH"/>
+					</h:outputText>
+				</h:column>			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Expenses list"/>
+					</f:facet>					
+					<h:link outcome="expenseslist" value="Expenses list">
+						<f:param name="budgetId" value="#{budget.id}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Summary"/>
+					</f:facet>
+					<h:link outcome="budgetsummary" value="Summary">
+						<f:param name="budgetId" value="#{budget.id}"/>
+					</h:link>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Delete"/>
+					</f:facet>
+					<h:commandLink action="#{budgetController.delete}"
+								   onclick="if (!confirm('Are you sure want to remove this item?')) { return false; }" 
+								   value="Delete">
+						<f:setPropertyActionListener target="#{budgetController.selectedBudgetId}" value="#{budget.id}"/>
+						<f:ajax execute="@this" render=":budgetsListForm"/>
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+			</h:form>
+		</ui:define>	
+	</ui:composition>
+	
+</html>

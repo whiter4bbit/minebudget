@@ -1,35 +1,15 @@
 package info.whiter4bbit.model;
 
-public class CurrencyProperties {
-	
-	private Currency currency;
-	
-	private Double toUSD;
-	
-	private Double fromUSD;
+import java.util.Locale;
 
-	public Currency getCurrency() {
-		return currency;
-	}
+public interface CurrencyProperties {
 	
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
-	}
-	
-	public Double getToUSD() {
-		return toUSD;
-	}
+	Currency getCurrency();	
+		
+	Double getToUSD();
 
-	public void setToUSD(Double toUSD) {
-		this.toUSD = toUSD;
-	}
+	Double getFromUSD();
 
-	public Double getFromUSD() {
-		return fromUSD;
-	}
-
-	public void setFromUSD(Double fromUSD) {
-		this.fromUSD = fromUSD;
-	}
+	Locale getLocale();
 	
 }

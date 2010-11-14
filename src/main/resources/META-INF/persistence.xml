@@ -6,7 +6,7 @@
 		http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 		
 	<persistence-unit name="budgetPU" transaction-type="JTA">
-		<jta-data-source>jdbc/mysql</jta-data-source>
+		<jta-data-source>mysql</jta-data-source>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 		</properties>
