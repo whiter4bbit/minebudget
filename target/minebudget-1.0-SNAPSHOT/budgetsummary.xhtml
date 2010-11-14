@@ -7,14 +7,14 @@
 	
 	<ui:composition template="template.xhtml">
 		<ui:define name="meta">
-			<f:metadata>
+				<f:metadata>
 				<f:viewParam name="budgetId" required="true" value="#{budgetController.selectedBudgetId}"/>
 			</f:metadata>
 		</ui:define>
 		<ui:define name="body">
 			Summary for budget <b>#{budgetController.selectedBudget.name}</b> <br/>
-			Initial amount: #{budgetController.selectedBudget.amount} <br/>
-			Current amount: #{budgetController.selectedBudget.currentAmount} <br/>
+			Initial amount: <h:outputText value="#{budgetController.selectedBudget.amount}"/> <br/>
+			Current amount: <h:outputText value="#{budgetController.selectedBudget.currentAmount}"/> <br/>
 		</ui:define>	
 	</ui:composition>
 	

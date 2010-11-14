@@ -16,19 +16,26 @@ public class BudgetServiceBean implements BudgetService {
 	private static final Logger LOG = Logger.getLogger(BudgetServiceBean.class.getName());
 	
 	@EJB
-	private ExpenseDao expenseDao; 
+	private ExpenseDao expenseDao;
+	
+	@EJB
+	private CurrencyService currencyService;
 
 	@Override
 	public Money calculateBalance(Budget budget) {
 		List<Expense> expenses = expenseDao.find(budget.getId());
-		Double balance = budget.getAmount().getAmount();
+		Money budgetAmount = budget.getAmount();
+		Double balance = budgetAmount.getAmount();
 		int expesesCount = 0;
 		for (Expense expense : expenses) {
-			balance -= expense.getAmount().getAmount();
+			Money amount = expense.getAmount();
+			final Double budgetCurrencyAmount
+				= currencyService.convert(amount, budgetAmount.getCurrency()).getAmount();
+			balance -= budgetCurrencyAmount;
 			expesesCount++;
 		}
-		LOG.info("balance from " + budget.getAmount() + " is "				
+		LOG.info("balance from " + budgetAmount + " is "				
 				+ balance + " with " + expesesCount + " expenses");
-		return new Money(balance, budget.getAmount().getCurrency());
+		return new Money(balance, budgetAmount.getCurrency());
 	}
 }

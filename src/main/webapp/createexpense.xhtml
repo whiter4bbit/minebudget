@@ -9,8 +9,7 @@
 	<ui:composition template="template.xhtml">
 		<ui:define name="meta">
 			<f:metadata>
-				<f:viewParam name="budgetId" 
-						required="true" value="#{expensesController.budgetId}"/>
+				<f:viewParam name="budgetId" value="#{expensesController.budgetId}"/>
 			</f:metadata>
 		</ui:define>
 		<ui:define name="body">
@@ -21,7 +20,7 @@
     			<h:panelGrid columns="3">
     				<h:outputLabel value="Expense description" for="description"/>
     				<h:inputText id="description" value="#{expensesController.current.description}" title="Expense description"/>
-    				<h:message for="description"/>					
+    				<h:message for="description"/>
     			</h:panelGrid>
 				<bt:moneyinput value="#{expensesController.current.amount}" amountLabel="Expense amount"/>
     			<h:panelGrid columns="3">

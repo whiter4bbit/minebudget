@@ -44,19 +44,21 @@ public class ExpensesController {
 	
 	public Budget getBudget() {
 		if (budget == null) {
-			budget = budgetDao.get(budgetId); 
+			budget = budgetDao.get(getBudgetId());
 		}
 		return budget;
 	}
 	
 	public Long getBudgetId() {
-		if (budgetId == null) {
+		if (budgetId == null) {			
 			budgetId = (Long) sessionMap.get("_budgetId");
+			LOG.info("Loading budgetId from session " + budgetId);
 		}
 		return budgetId;
 	}
 	
 	public void setBudgetId(Long budgetId) {
+		LOG.info("Setting budget id to " + budgetId);
 		sessionMap.put("_budgetId", budgetId);
 		this.budgetId = budgetId;
 	}

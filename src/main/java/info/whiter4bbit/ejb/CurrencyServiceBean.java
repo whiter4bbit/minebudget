@@ -3,6 +3,7 @@ package info.whiter4bbit.ejb;
 import info.whiter4bbit.ejb.currency.CurrencyUtils;
 import info.whiter4bbit.model.Currency;
 import info.whiter4bbit.model.CurrencyProperties;
+import info.whiter4bbit.model.Money;
 
 import javax.ejb.Singleton;
 
@@ -15,5 +16,11 @@ public class CurrencyServiceBean implements CurrencyService {
 		CurrencyProperties currencyTo = CurrencyUtils.getProperties(to);
 		Double usdAmount = currencyFrom.getToUSD() * amount;
 		return currencyTo.getFromUSD() * usdAmount;
+	}
+	
+	@Override
+	public Money convert(Money from, Currency to) {
+		Double amount = convert(from.getCurrency(), to, from.getAmount());		
+		return new Money(amount, to);
 	}
 }
